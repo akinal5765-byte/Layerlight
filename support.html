@@ -90,64 +90,6 @@
             margin: 24px 0;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 16px;
-            background: rgba(0, 0, 0, 0.03);
-            border-radius: 12px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .feature-item {
-                background: rgba(255, 255, 255, 0.05);
-            }
-
-            .highlight-box {
-                background: rgba(41, 151, 255, 0.1);
-            }
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .feature-icon.blue {
-            background: rgba(0, 122, 255, 0.15);
-        }
-
-        .feature-icon.orange {
-            background: rgba(255, 149, 0, 0.15);
-        }
-
-        .feature-icon.green {
-            background: rgba(52, 199, 89, 0.15);
-        }
-
-        .feature-icon.purple {
-            background: rgba(175, 82, 222, 0.15);
-        }
-
-        .feature-content h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .feature-content p {
-            font-size: 14px;
-            color: var(--secondary);
-            margin: 0;
-        }
-
         .faq-item {
             margin-bottom: 20px;
             padding: 16px;
@@ -158,6 +100,10 @@
         @media (prefers-color-scheme: dark) {
             .faq-item {
                 background: rgba(255, 255, 255, 0.05);
+            }
+
+            .highlight-box {
+                background: rgba(41, 151, 255, 0.1);
             }
         }
 
@@ -197,65 +143,188 @@
             color: var(--secondary);
             font-size: 13px;
         }
+
+        .lang-switch {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--accent);
+            z-index: 100;
+        }
+
+        .lang-switch:hover {
+            background: rgba(0, 102, 204, 0.08);
+        }
+
+        .en {
+            display: none;
+        }
+
+        html[lang="en"] .zh {
+            display: none;
+        }
+
+        html[lang="en"] .en {
+            display: block;
+        }
+
+        html[lang="en"] .en-inline {
+            display: inline;
+        }
+
+        html[lang="en"] .zh-inline {
+            display: none;
+        }
+
+        .en-inline {
+            display: none;
+        }
+
+        .zh-inline {
+            display: inline;
+        }
     </style>
 </head>
 
 <body>
-    <h1>支持与帮助</h1>
-    <p class="update-date">Layerlight - 让照片焕发生机</p>
+    <button class="lang-switch" onclick="toggleLang()">
+        <span class="zh-inline">English</span>
+        <span class="en-inline">中文</span>
+    </button>
+
+    <h1>
+        <span class="zh">支持与帮助</span>
+        <span class="en">Support</span>
+    </h1>
+    <p class="update-date">Layerlight - <span class="zh">让照片焕发生机</span><span class="en">Bring your photos to life</span>
+    </p>
 
     <div class="highlight-box">
-        <p><strong>我们随时为您提供帮助。</strong>如果您在使用过程中遇到任何问题，请查看下方常见问题或直接联系我们。</p>
+        <p>
+            <span class="zh"><strong>我们随时为您提供帮助。</strong>如果您在使用过程中遇到任何问题，请查看下方常见问题或直接联系我们。</span>
+            <span class="en"><strong>We're here to help.</strong> If you encounter any issues while using the app,
+                please check the FAQ below or contact us directly.</span>
+        </p>
     </div>
 
-    <h2>常见问题</h2>
+    <h2>
+        <span class="zh">常见问题</span>
+        <span class="en">FAQ</span>
+    </h2>
 
     <div class="feature-grid">
         <div class="faq-item">
-            <p class="faq-q">Q: 什么是 HDR 照片？</p>
-            <p class="faq-a">A: HDR（High Dynamic Range）照片能够展现更广的亮度范围，让高光更亮、暗部更有细节。在支持的设备上，您的照片会显得更加生动真实。</p>
+            <p class="faq-q">
+                <span class="zh">Q: 什么是 HDR 照片？</span>
+                <span class="en">Q: What is an HDR photo?</span>
+            </p>
+            <p class="faq-a">
+                <span class="zh">A: HDR（High Dynamic Range）照片能够展现更广的亮度范围，让高光更亮、暗部更有细节。在支持的设备上，您的照片会显得更加生动真实。</span>
+                <span class="en">A: HDR (High Dynamic Range) photos display a wider range of brightness, making
+                    highlights brighter and shadows more detailed. On supported devices, your photos will appear more
+                    vivid and lifelike.</span>
+            </p>
         </div>
 
         <div class="faq-item">
-            <p class="faq-q">Q: 为什么我的照片看起来没有变化？</p>
-            <p class="faq-a">A: HDR 效果需要在支持 EDR 的设备上才能显示。请确保您的 iPhone 屏幕亮度调高，并且在光线充足的环境下观看。</p>
+            <p class="faq-q">
+                <span class="zh">Q: 为什么我的照片看起来没有变化？</span>
+                <span class="en">Q: Why doesn't my photo look different?</span>
+            </p>
+            <p class="faq-a">
+                <span class="zh">A: HDR 效果需要在支持 EDR 的设备上才能显示。请确保您的 iPhone 屏幕亮度调高，并且在光线充足的环境下观看。</span>
+                <span class="en">A: HDR effects require an EDR-capable display. Make sure your iPhone's screen
+                    brightness is turned up and view the photo in a well-lit environment.</span>
+            </p>
         </div>
 
         <div class="faq-item">
-            <p class="faq-q">Q: 导出的照片可以在其他平台看到 HDR 效果吗？</p>
-            <p class="faq-a">A: 是的！我们专门优化了导出格式，让您的 HDR 照片可以在小红书、微信等主流平台上正确显示 HDR 效果。</p>
+            <p class="faq-q">
+                <span class="zh">Q: 导出的照片可以在其他平台看到 HDR 效果吗？</span>
+                <span class="en">Q: Can I see HDR effects on other platforms?</span>
+            </p>
+            <p class="faq-a">
+                <span class="zh">A: 是的！我们专门优化了导出格式，让您的 HDR 照片可以在小红书、微信等主流平台上正确显示 HDR 效果。</span>
+                <span class="en">A: Yes! We've optimized the export format so your HDR photos display correctly on major
+                    platforms like Xiaohongshu, WeChat, and more.</span>
+            </p>
         </div>
 
         <div class="faq-item">
-            <p class="faq-q">Q: 如何恢复购买？</p>
-            <p class="faq-a">A: 进入应用内的「设置」页面，点击「恢复购买」按钮即可恢复之前的购买记录。</p>
+            <p class="faq-q">
+                <span class="zh">Q: 如何恢复购买？</span>
+                <span class="en">Q: How do I restore my purchase?</span>
+            </p>
+            <p class="faq-a">
+                <span class="zh">A: 进入应用内的「设置」页面，点击「恢复购买」按钮即可恢复之前的购买记录。</span>
+                <span class="en">A: Go to the "Settings" page in the app and tap "Restore Purchases" to recover your
+                    previous purchases.</span>
+            </p>
         </div>
 
         <div class="faq-item">
-            <p class="faq-q">Q: 如何取消订阅？</p>
-            <p class="faq-a">A: 请前往「设置 → Apple ID → 订阅」中管理或取消订阅。</p>
+            <p class="faq-q">
+                <span class="zh">Q: 如何取消订阅？</span>
+                <span class="en">Q: How do I cancel my subscription?</span>
+            </p>
+            <p class="faq-a">
+                <span class="zh">A: 请前往「设置 → Apple ID → 订阅」中管理或取消订阅。</span>
+                <span class="en">A: Go to Settings → Apple ID → Subscriptions to manage or cancel your
+                    subscription.</span>
+            </p>
         </div>
     </div>
 
     <div class="contact">
-        <h2>联系我们</h2>
-        <p>如果您在使用过程中遇到任何问题，或有功能建议，欢迎联系我们：</p>
-        <p>📧 邮箱：<a href="mailto:akinal5765@gmail.com">akinal5765@gmail.com</a></p>
-        <p>我们会在 1-2 个工作日内回复您的邮件。</p>
+        <h2>
+            <span class="zh">联系我们</span>
+            <span class="en">Contact Us</span>
+        </h2>
+        <p>
+            <span class="zh">如果您在使用过程中遇到任何问题，或有功能建议，欢迎联系我们：</span>
+            <span class="en">If you have any questions or feature suggestions, feel free to contact us:</span>
+        </p>
+        <p>📧 <span class="zh">邮箱</span><span class="en">Email</span>：<a
+                href="mailto:akinal5765@gmail.com">akinal5765@gmail.com</a></p>
+        <p>
+            <span class="zh">我们会在 1-2 个工作日内回复您的邮件。</span>
+            <span class="en">We will respond within 1-2 business days.</span>
+        </p>
     </div>
 
     <div class="links">
-        <h2>相关链接</h2>
+        <h2>
+            <span class="zh">相关链接</span>
+            <span class="en">Related Links</span>
+        </h2>
         <ul>
-            <li><a href="./index.html">隐私政策</a></li>
-            <li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">服务条款 (Apple
-                    EULA)</a></li>
+            <li><a href="./index.html"><span class="zh">隐私政策</span><span class="en">Privacy Policy</span></a></li>
+            <li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank"><span
+                        class="zh">服务条款 (Apple EULA)</span><span class="en">Terms of Service (Apple EULA)</span></a>
+            </li>
         </ul>
     </div>
 
     <footer>
         <p>© 2025 Layerlight. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleLang() {
+            const html = document.documentElement;
+            html.lang = html.lang === 'en' ? 'zh-CN' : 'en';
+        }
+        // Auto-detect browser language
+        if (navigator.language && !navigator.language.startsWith('zh')) {
+            document.documentElement.lang = 'en';
+        }
+    </script>
 </body>
 
 </html>
