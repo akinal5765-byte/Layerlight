@@ -58,6 +58,47 @@
             padding: 0 24px;
         }
 
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 149, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 149, 0, 0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
         /* Header */
         header {
             position: fixed;
@@ -91,10 +132,10 @@
             gap: 8px;
         }
 
-        .logo span {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            fill: url(#logoGradient);
         }
 
         .lang-switch {
@@ -132,7 +173,28 @@
             background: radial-gradient(circle, rgba(255, 149, 0, 0.15) 0%, transparent 70%);
             pointer-events: none;
             z-index: -1;
+            animation: pulse 8s infinite ease-in-out;
+            /* Subtle breathing background */
+            animation-name: breathe;
         }
+
+        @keyframes breathe {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+        }
+
 
         h1 {
             font-size: clamp(40px, 8vw, 72px);
@@ -140,6 +202,7 @@
             letter-spacing: -0.02em;
             margin-bottom: 24px;
             line-height: 1.1;
+            animation: fadeUp 0.8s ease-out;
         }
 
         .gradient-text {
@@ -154,11 +217,13 @@
             max-width: 600px;
             margin: 0 auto 48px;
             font-weight: 400;
+            animation: fadeUp 0.8s ease-out 0.2s backwards;
         }
 
         .download-btn {
             display: inline-block;
             transition: transform 0.2s;
+            animation: fadeUp 0.8s ease-out 0.4s backwards;
         }
 
         .download-btn:hover {
@@ -175,6 +240,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             padding: 80px 0;
+            animation: fadeUp 0.8s ease-out 0.6s backwards;
         }
 
         .card {
@@ -182,25 +248,51 @@
             border: 1px solid var(--border);
             border-radius: 24px;
             padding: 32px;
-            transition: transform 0.3s, background 0.3s;
+            transition: transform 0.3s, background 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
             transform: translateY(-4px);
             background: var(--surface-hover);
+            border-color: rgba(255, 149, 0, 0.3);
         }
 
-        .icon {
-            font-size: 32px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
+        .icon-container {
             width: 64px;
             height: 64px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
         }
+
+        .card:hover .icon-container svg {
+            transform: scale(1.1);
+        }
+
+        .icon-container svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .card:nth-child(1) svg {
+            fill: url(#iconGradient1);
+        }
+
+        .card:nth-child(2) svg {
+            fill: url(#iconGradient2);
+        }
+
+        .card:nth-child(3) svg {
+            fill: url(#iconGradient3);
+        }
+
 
         .card h3 {
             font-size: 20px;
@@ -238,16 +330,54 @@
         .step {
             text-align: center;
             max-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .step:hover .step-icon {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 149, 0, 0.2);
+        }
+
+        .step-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-secondary);
+            transition: fill 0.3s;
+        }
+
+        .step:hover .step-icon svg {
+            fill: var(--accent);
+        }
+
+        .step-connector {
+            display: none;
+            /* Implementation of connector lines is complex responsive-wise, kept simple for now */
         }
 
         .step-num {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: block;
+            opacity: 0.8;
         }
 
         .step h4 {
@@ -284,15 +414,48 @@
         .footer-links a:hover {
             color: var(--text);
         }
+
+        /* SVG Definitions - Hidden */
+        .svg-defs {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- SVG Definitions for Gradients -->
+    <svg class="svg-defs">
+        <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF9500;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FF5E3A;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="iconGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFD60A;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FF9F0A;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="iconGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#32D74B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#0A84FF;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="iconGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#BF5AF2;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FF375F;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">
-                <span style="font-size: 24px; margin-right: 4px;">✦</span> Layerlight
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L14.4 7.2L20 8L16 12L17 17.5L12 15L7 17.5L8 12L4 8L9.6 7.2L12 2Z" />
+                </svg>
+                Layerlight
             </a>
             <button class="lang-switch" onclick="toggleLang()">
                 <span lang="en">中文</span>
@@ -328,7 +491,11 @@
             <div class="grid">
                 <!-- Feature 1 -->
                 <div class="card">
-                    <div class="icon">⚡️</div>
+                    <div class="icon-container">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" />
+                        </svg>
+                    </div>
                     <h3>
                         <span lang="en">Instant Radiance</span>
                         <span lang="zh">一键光感</span>
@@ -342,7 +509,12 @@
 
                 <!-- Feature 2 -->
                 <div class="card">
-                    <div class="icon">🎚</div>
+                    <div class="icon-container">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M4 17V9H2V17H4ZM22 17V13H20V17H22ZM18 17V5H16V17H18ZM14 17V9H12V17H14ZM10 17V5H8V17H10ZM6 17V13H4V17H6Z" />
+                        </svg>
+                    </div>
                     <h3>
                         <span lang="en">Precise Control</span>
                         <span lang="zh">精准控制</span>
@@ -356,7 +528,12 @@
 
                 <!-- Feature 3 -->
                 <div class="card">
-                    <div class="icon">🖼</div>
+                    <div class="icon-container">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V13H11V7ZM11 15H13V17H11V15Z" />
+                        </svg>
+                    </div>
                     <h3>
                         <span lang="en">Designed for Sharing</span>
                         <span lang="zh">为分享而生</span>
@@ -380,6 +557,12 @@
 
                 <div class="steps">
                     <div class="step">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M21 19V5C21 3.89 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" />
+                            </svg>
+                        </div>
                         <span class="step-num">Step 01</span>
                         <h4>
                             <span lang="en">Select</span>
@@ -392,6 +575,12 @@
                     </div>
 
                     <div class="step">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z" />
+                            </svg>
+                        </div>
                         <span class="step-num">Step 02</span>
                         <h4>
                             <span lang="en">Enhance</span>
@@ -404,6 +593,12 @@
                     </div>
 
                     <div class="step">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 12V19H5V12H3V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V12H19ZM13 9.17L14.41 10.59L17 8L12 3L7 8L9.59 10.59L11 9.17V16H13V9.17Z" />
+                            </svg>
+                        </div>
                         <span class="step-num">Step 03</span>
                         <h4>
                             <span lang="en">Export</span>
