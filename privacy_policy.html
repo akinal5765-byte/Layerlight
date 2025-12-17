@@ -136,6 +136,10 @@
             background: rgba(175, 82, 222, 0.15);
         }
 
+        .feature-icon.cyan {
+            background: rgba(50, 173, 230, 0.15);
+        }
+
         .feature-content h3 {
             font-size: 16px;
             font-weight: 600;
@@ -313,19 +317,37 @@
         <span class="zh">导出照片与元数据</span>
         <span class="en">Photo Exports & Metadata</span>
     </h2>
-    <p>
-        <span class="zh">当您导出编辑后的照片时，Layerlight 会保留原始照片的 EXIF 元数据，包括拍摄参数（相机型号、光圈、快门速度等）以及位置信息（如果原始照片包含 GPS
-            坐标）。<strong>这些信息仅存储在您的设备和导出的照片文件中，不会被上传到任何服务器。</strong></span>
-        <span class="en">When you export edited photos, Layerlight preserves the original EXIF metadata, including
-            camera settings (camera model, aperture, shutter speed, etc.) and location information (if the original
-            photo contains GPS coordinates). <strong>This data is stored only on your device and in the exported photo
-                file—it is never uploaded to any server.</strong></span>
-    </p>
-    <p>
-        <span class="zh">导出的照片会保存到名为 "Layerlight" 的独立相册中，方便您管理和查找。此功能需要相册访问权限。</span>
-        <span class="en">Exported photos are saved to a dedicated "Layerlight" album for easy organization and
-            retrieval. This feature requires photo library access.</span>
-    </p>
+
+    <div class="feature-grid">
+        <div class="feature-item">
+            <div class="feature-icon cyan">📋</div>
+            <div class="feature-content">
+                <h3>
+                    <span class="zh">照片元数据</span>
+                    <span class="en">Photo Metadata</span>
+                </h3>
+                <p>
+                    <span class="zh">导出时会保留原始 EXIF 信息（拍摄参数、位置等），仅存储在本地，不会上传到任何服务器。</span>
+                    <span class="en">Exports preserve EXIF data (camera settings, location, etc.). Stored locally only,
+                        never uploaded.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon orange">📁</div>
+            <div class="feature-content">
+                <h3>
+                    <span class="zh">独立相册</span>
+                    <span class="en">Dedicated Album</span>
+                </h3>
+                <p>
+                    <span class="zh">导出的照片会保存到名为 "Layerlight" 的相册中，方便管理和查找。</span>
+                    <span class="en">Exports are saved to a "Layerlight" album for easy organization.</span>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <h2>
         <span class="zh">我们收集的数据</span>
@@ -355,9 +377,11 @@
     </p>
     <ul>
         <li>
-            <span class="zh"><strong>照片库访问：</strong>用于从相册导入照片进行编辑，以及将编辑后的照片保存回相册。照片数据仅在本地处理，不会离开您的设备。</span>
-            <span class="en"><strong>Photo Library Access:</strong> Used to import photos for editing and save edited
-                photos back to your library. Photo data is processed locally and never leaves your device.</span>
+            <span class="zh"><strong>照片库访问：</strong>用于将导出的照片保存到相册，并整理到名为 "Layerlight"
+                的独立相册中，方便管理和查找。照片数据仅在本地处理，不会离开您的设备。</span>
+            <span class="en"><strong>Photo Library Access:</strong> Used to save exported photos to your library and
+                organize them in a dedicated "Layerlight" album for easy management. Photo data is processed locally and
+                never leaves your device.</span>
         </li>
         <li>
             <span class="zh"><strong>网络访问：</strong>应用仅在初始化"应用内购买"服务时需要网络连接，以便从 Apple
